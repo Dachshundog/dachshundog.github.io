@@ -29,45 +29,54 @@
   </header>
   <main id="main">
     <section id="top" class="hero" aria-labelledby="hero-title">
-      <img class="hero-image" src="assets/mobility-network.svg" alt="" aria-hidden="true" width="1440" height="840">
-      <div class="hero-overlay"></div>
       <div class="hero-content">
-        <p class="eyebrow">Peking University · Graduate Researcher</p>
-        <h1 id="hero-title">Human mobility,<br>activity chains<br><span>&amp; GeoAI.</span></h1>
-        <p class="hero-copy">I study how daily activities shape travel, how households coordinate their journeys, and how geospatial data can inform location decisions.</p>
+        <p class="eyebrow">Peking University · Master’s student</p>
+        <h1 id="hero-title">Jiahe Xi</h1>
+        <p class="hero-copy">I study human mobility and activity chains using mobile phone signalling and travel surveys. My work also applies GeoAI to commercial catchments, service coverage and location decisions.</p>
         <div class="hero-actions" aria-label="Primary links">
-          <a class="button primary" href="#research">Explore Research</a>
-          <a class="button secondary" href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+          <a class="intro-email" href="mailto:xijiahe@stu.pku.edu.cn">xijiahe@stu.pku.edu.cn</a>
+          <a class="intro-cv" href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
         </div>
-      </div>
-    </section>
-    <section class="identity-band" aria-label="Profile summary">
-      <div class="content-grid compact">
-        <div>
-          <p class="section-kicker">About</p>
-          <h2>Jiahe Xi <span class="name-zh" lang="zh">郗家禾</span></h2>
-        </div>
-        <p>I am a master's student at the School of Architecture and Landscape Design, Peking University. My research combines mobile phone signalling and travel surveys to understand activity semantics and school-related travel chains. At Master Concept, I work on mobility data integration, POI-based spatial analysis and route evaluation.</p>
       </div>
     </section>
     <section id="research" class="section">
       <div class="section-heading">
         <p class="section-kicker">Research</p>
-        <h2>Understanding daily travel through activities and places</h2>
-        <p>My work connects travel behaviour analysis with geospatial modelling, from interpreting individual stops to assessing urban service provision and commercial catchments.</p>
+        <h2>Three connected research directions</h2>
       </div>
       <div class="research-list" aria-label="Research interests">
         <article>
           <h3>Human Mobility</h3>
           <p>Daily travel patterns, recurring destinations and the relationships between school journeys, work commutes and other activities.</p>
+          <a class="direction-link" href="#motivation-mobility">Research motivation</a>
         </article>
         <article>
           <h3>Activity Chains</h3>
           <p>Bayesian activity inference, sequence analysis and household travel coordination, with explicit attention to uncertainty in signalling records.</p>
+          <a class="direction-link" href="#motivation-chains">Research motivation</a>
         </article>
         <article>
           <h3>GeoAI &amp; Site Selection</h3>
           <p>POI and footfall analysis, commercial catchments, service coverage and route evaluation using geospatial data and Google Maps APIs.</p>
+          <a class="direction-link" href="#motivation-geoai">Research motivation</a>
+        </article>
+      </div>
+      <div class="motivation-block" aria-labelledby="motivation-title">
+        <div class="motivation-heading"><p class="section-kicker">Research Motivation</p><h3 id="motivation-title">The questions I want to understand</h3></div>
+        <article class="motivation-row" id="motivation-mobility">
+          <h4>Human Mobility</h4>
+          <div><h5>How do everyday constraints shape the journeys people make?</h5>
+          <p>My own school commutes and later move to Beijing made travel time and accessibility tangible questions. I want to understand how residence, work schedules, school obligations and household responsibilities organise daily movement, and how these individual decisions contribute to congestion and unequal access to opportunities.</p></div>
+        </article>
+        <article class="motivation-row" id="motivation-chains">
+          <h4>Activity Chains</h4>
+          <div><h5>What can incomplete observations tell us about daily activities?</h5>
+          <p>Working with coarse mobile phone signalling records led me to ask what we can learn about activities when locations and destinations remain uncertain. I aim to infer activity purposes and recurring structures across days while preserving uncertainty, individual variation and the coordination between household members. I also want to examine which activity information can be retained without reconstructing precise individual movements.</p></div>
+        </article>
+        <article class="motivation-row" id="motivation-geoai">
+          <h4>GeoAI &amp; Site Selection</h4>
+          <div><h5>How can geographic evidence support better location decisions?</h5>
+          <p>Public-space assessment and mapping applications made me interested in how places function within people's daily lives. I aim to combine mobility observations, POIs, imagery and transport networks to evaluate accessibility, commercial catchments and service gaps. Differences in data availability and quality motivate me to examine how these analyses remain reliable across cities, especially where direct mobility observations are scarce.</p></div>
         </article>
       </div>
       <article class="research-panel" aria-labelledby="thesis-title">
@@ -94,7 +103,7 @@
           <div class="timeline-body">
             <h3>Map AI Solutions Engineer Intern</h3>
             <p class="meta">Master Concept · Google Maps Platform reseller · Hong Kong</p>
-            <p>I work with developers to integrate mobility and site-selection APIs, validate sample trajectories and derive footfall and delivery-service attributes from POI and trajectory data. I configure Gemini Enterprise agents to query POI and footfall data through the Places Insights API, supporting analysis of commercial catchments and service gaps. Using SQL and BigQuery, I compare routes by distance, travel time and coverage under vehicle and stop constraints.</p>
+            <ul><li>Integrate Google Maps mobility and site-selection APIs with developers; validate trajectories and derive footfall and delivery-service attributes from POI and trajectory data.</li><li>Configure Gemini Enterprise agents to query POI and footfall data through the Places Insights API, supporting commercial catchment and service-gap analysis.</li><li>Use SQL and BigQuery to compare routes by distance, travel time and service coverage under vehicle and stop constraints.</li></ul>
           </div>
         </article>
         <article class="timeline-item">
@@ -102,7 +111,7 @@
           <div class="timeline-body">
             <h3>Urban Public Space Assessment and Park Service Analysis</h3>
             <p class="meta">Research Assistant, Peking University · Hunan CSPON Programme</p>
-            <p>I led data collection and street-view image analysis, using semantic segmentation, depth estimation and object detection to measure greenery, openness and facility visibility. I also modelled park service provision using visitation flows and distance decay, incorporating supply capacity and demand estimates, and prepared maps of spatial variation in service provision.</p>
+            <ul><li>Led street-view data collection and image analysis, using semantic segmentation, depth estimation and object detection to measure greenery, openness and facility visibility.</li><li>Modelled park service provision using visitation flows, distance decay, supply capacity and demand estimates; prepared maps of spatial variation in service provision.</li></ul>
           </div>
         </article>
         <article class="timeline-item">
@@ -110,7 +119,7 @@
           <div class="timeline-body">
             <h3>Spatiotemporal Knowledge Graphs for Urban Governance</h3>
             <p class="meta">Research Assistant, Peking University</p>
-            <p>I contributed to model fine-tuning for service-request classification and defined spatial and temporal attributes for a knowledge graph. I used large language models for structured information extraction and examined classification and entity-linking errors, with applications to POI accuracy and navigation feedback.</p>
+            <ul><li>Contributed to model fine-tuning for service-request classification and defined spatial and temporal attributes for a knowledge graph.</li><li>Used large language models for structured information extraction and examined classification and entity-linking errors, with applications to POI accuracy and navigation feedback.</li></ul>
           </div>
         </article>
       </div>
@@ -122,7 +131,7 @@
       </div>
       <div class="timeline education-list">
         <article class="timeline-item">
-          <div class="time">2023–2027</div>
+          <div class="time">Sep 2023–Jan 2027</div>
           <div class="timeline-body">
             <h3>Peking University</h3>
             <p class="meta">Master of Engineering · Expected graduation: January 2027</p>
@@ -134,7 +143,7 @@
           <div class="timeline-body"><h3>RWTH Aachen University</h3><p>Transforming City Regions</p></div>
         </article>
         <article class="timeline-item">
-          <div class="time">2019–2023</div>
+          <div class="time">Sep 2019–Jun 2023</div>
           <div class="timeline-body"><h3>Beijing Forestry University</h3><p class="meta">Bachelor of Landscape Architecture</p><p>GPA: 86.2/100.</p></div>
         </article>
       </div>
@@ -149,10 +158,11 @@
     <section id="publications" class="section alt">
       <div class="section-heading"><p class="section-kicker">Selected Outputs</p><h2>Publications, presentation &amp; patent</h2></div>
       <ol class="publication-list">
-        <li><strong>Xi, J.</strong>, &amp; Xu, L. (2027). How Institutional Anchors Organize Daily Mobility: Open-Pattern and Recurrent-Anchor Mechanisms in Kunming's Urban Flows. <em>TRB 106th Annual Meeting</em>, Washington, D.C. <span class="publication-status">Accepted for presentation</span></li>
-        <li>Peng, J., <strong>Xi, J.</strong>, Ye, Y., Xu, L., &amp; Ye, J. (2025). Evaluating the quality of urban public space based on the scene perception theory. <em>Urban Development Studies</em>, 32(12), 84–91. DOI: 10.3969/j.issn.1006-3862.2025.12.021.</li>
-        <li>Huang, K., Yin, J., <strong>Xi, J.</strong>, Ye, Y., &amp; Xu, L. (2026). Disentangling the Spatial and Preferential Aspects in the Value Realization of the Spatially Sensitive Ecosystem Service. <em>Ecosystem Health and Sustainability.</em> <span class="publication-status">Under review</span></li>
-        <li>Ma, Z. H., Wen, N., Yao, D. Y., <strong>Xi, J.</strong>, et al. (2025). A method, device, and medium for evaluating the quality of public spaces based on multi-dimensional features. Chinese patent application No. CN 202510376867.</li>
+        <li><span class="publication-type">Conference presentation</span><strong>Xi, J.</strong>, &amp; Xu, L. (2027). How Institutional Anchors Organize Daily Mobility: Open-Pattern and Recurrent-Anchor Mechanisms in Kunming's Urban Flows. <em>TRB 106th Annual Meeting</em>, Washington, D.C. <span class="publication-status">Accepted for presentation</span></li>
+        <li><span class="publication-type">Journal article</span>Peng, J., <strong>Xi, J.</strong>, Ye, Y., Xu, L., &amp; Ye, J. (2025). Evaluating the quality of urban public space based on the scene perception theory. <em>Urban Development Studies</em>, 32(12), 84–91. <a href="https://doi.org/10.3969/j.issn.1006-3862.2025.12.021">DOI: 10.3969/j.issn.1006-3862.2025.12.021</a>.</li>
+        <li><span class="publication-type">Manuscript under review</span>Huang, K., Yin, J., <strong>Xi, J.</strong>, Ye, Y., &amp; Xu, L. (2026). Disentangling the Spatial and Preferential Aspects in the Value Realization of the Spatially Sensitive Ecosystem Service. <em>Ecosystem Health and Sustainability.</em> <span class="publication-status">Under review</span></li>
+        <li><span class="publication-type">Patent application</span>Ma, Z. H., Wen, N., Yao, D. Y., <strong>Xi, J.</strong>, et al. (2025). A method, device, and medium for evaluating the quality of public spaces based on multi-dimensional features. Chinese patent application No. CN 202510376867.</li>
+        <li><span class="publication-type">Journal article · Landscape history</span><strong>Xi, J.</strong>, &amp; Liu, Y. (2026). Scenery Borrowing from Within and Beyond: A Study on Viewing Landscape of Yuanmingyuan and Its Surrounding Areas in Emperor Qianlong’s Poems. <em>China City Planning Review</em>, 35(2), 76–88.</li>
       </ol>
     </section>
     <section id="contact" class="section contact-section">
@@ -167,7 +177,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><p>Jiahe Xi · Human Mobility, Activity Chains &amp; GeoAI</p></footer>
+  <footer class="footer"><p>Jiahe Xi · Human Mobility, Activity Chains &amp; GeoAI · Updated November 2026</p></footer>
   <script src="assets/script.js"></script>
 </body>
 </html>
