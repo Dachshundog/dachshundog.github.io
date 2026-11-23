@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 840" fill="none">
+  <defs>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(-18)">
+      <path d="M56 0H0V56" stroke="#7eacbd" stroke-opacity=".12"/>
+    </pattern>
+    <radialGradient id="glow">
+      <stop stop-color="#2d776d" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#102d40" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path fill="#102d40" d="M0 0h1440v840H0z"/>
+  <path fill="url(#grid)" d="M0 0h1440v840H0z"/>
+  <ellipse cx="1100" cy="410" rx="530" ry="480" fill="url(#glow)"/>
+  <g stroke="#729ba9" stroke-opacity=".22" stroke-width="2">
+    <path d="m590 0 85 175 190 45 95 195 220 70 260-70M720 840l70-180 170-245 125-145 190-45 165 30M460 590l185-60 145 130 200 50 190-225 150 195 110 30M865 220l220 50 95 215M675 175l-30 355 315-115M990 710l160 130M1275 225l55 455M1085 270l-95 440"/>
+    <path d="m780 0 85 220-75 440M1110 0l-25 270 245 410M1440 100l-165 125-95 260-190 225M460 590l330 70 540 20"/>
+  </g>
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="m675 175 190 45 95 195 220 70-190 225-200-50 170-245" stroke="#93d9bd" stroke-width="4"/>
+    <path d="m790 660 170-245 125-145 190-45 55 455" stroke="#75b4d0" stroke-width="3" stroke-dasharray="8 10"/>
+    <path d="m645 530 315-115 125-145" stroke="#d2b881" stroke-width="3" stroke-opacity=".8"/>
+  </g>
+  <g fill="#102d40" stroke="#93d9bd" stroke-width="3">
+    <circle cx="675" cy="175" r="8"/><circle cx="865" cy="220" r="9"/>
+    <circle cx="960" cy="415" r="13"/><circle cx="1180" cy="485" r="10"/>
+    <circle cx="990" cy="710" r="9"/><circle cx="790" cy="660" r="10"/>
+  </g>
+  <g fill="#75b4d0"><circle cx="1085" cy="270" r="6"/><circle cx="1275" cy="225" r="6"/><circle cx="1330" cy="680" r="6"/></g>
+  <circle cx="645" cy="530" r="6" fill="#d2b881"/>
+  <circle cx="960" cy="415" r="32" stroke="#93d9bd" stroke-opacity=".2"/>
+  <circle cx="960" cy="415" r="56" stroke="#93d9bd" stroke-opacity=".1"/>
+</svg>
