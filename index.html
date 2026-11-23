@@ -1,183 +1,608 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jiahe Xi researches human mobility, activity chains and GeoAI at Peking University, with experience in POI analysis, commercial site selection and route evaluation.">
-  <meta name="theme-color" content="#123c57">
-  <title>Jiahe Xi | Human Mobility, Activity Chains &amp; GeoAI</title>
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Jiahe Xi — Human Mobility, Activity Chains & GeoAI. Peking University researcher studying how people move through cities.">
+<meta name="theme-color" content="#0F2942">
+<title>Jiahe Xi | Human Mobility, Activity Chains &amp; GeoAI</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+navy: { DEFAULT: '#0F2942', light: '#1B3B6F', dark: '#0A1E33' },
+accent: { DEFAULT: '#0284C7', light: '#EFF6FF', hover: '#0369A1' },
+},
+fontFamily: {
+sans: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', 'sans-serif'],
+mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+},
+},
+},
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F2942'/%3E%3Cpath d='M25 17v23c0 11-14 12-17 2M35 18l18 29m0-29L35 47' fill='none' stroke='%230284C7' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+/* ── Scroll-padding for sticky header ── */
+html { scroll-padding-top: 80px; }
+/* ── Smooth nav link underline ── */
+.nav-link { position: relative; }
+.nav-link::after {
+content: '';
+position: absolute; bottom: -2px; left: 0;
+width: 0; height: 2px;
+background: #0284C7;
+transition: width 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+/* ── Research card hover lift ── */
+.research-card {
+transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.research-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 32px rgba(15,41,66,0.08);
+border-color: #0284C7;
+}
+/* ── Skill pill hover ── */
+.skill-pill {
+transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.skill-pill:hover {
+background: #0F2942;
+border-color: #0F2942;
+color: #fff;
+}
+/* ── Copied toast ── */
+.copy-toast {
+opacity: 0; transform: translateY(4px);
+transition: opacity 0.25s ease, transform 0.25s ease;
+pointer-events: none;
+}
+.copy-toast.show {
+opacity: 1; transform: translateY(0);
+}
+/* ── Mobile nav ── */
+.mobile-nav {
+max-height: 0; overflow: hidden;
+}
+.mobile-nav.open {
+max-height: 500px;
+}
+/* ── Print ── */
+@media print {
+header, .scroll-hint { display: none; }
+section { page-break-inside: avoid; }
+body { color: #000; }
+}
+#copy-email-btn { min-width:44px; min-height:44px; }
+:focus-visible { outline: 3px solid #0284C7; outline-offset: 4px; }
+.skip-link { position:fixed; top:-80px; left:16px; z-index:100; padding:10px 16px; background:#0F2942; color:white; }
+.skip-link:focus { top:12px; }
+.hero-compact { padding-top:96px; padding-bottom:4px; }
+.mobile-nav { visibility:hidden; }
+.mobile-nav.open { visibility:visible; }
+#publications ol { list-style:decimal; padding-left:1.4rem; }
+#publications ol>li { padding-left:.6rem; }
+#publications ol>li::marker { font-family:'JetBrains Mono',monospace; color:#64748B; }
+.motivation-context { border-left:2px solid #E2E8F0; padding-left:12px; }
+@media(min-width:768px) and (max-width:1099px) { #site-header nav>div { gap:14px; } }
+@media(max-width:767px) { .hero-compact { padding-top:80px; } }
+@media(prefers-reduced-motion:reduce) { html {scroll-behavior:auto!important;} *,*::before,*::after {transition:none!important;} }
+@media(max-width:1099px) { #site-header nav>div {display:none;} #nav-toggle {display:flex;} #mobile-nav {display:block;} }
+@media(min-width:1100px) { #nav-toggle,#mobile-nav {display:none!important;} }
+</style>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header" data-header>
-    <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Jiahe Xi homepage">Jiahe Xi<span class="brand-detail"> / Research</span></a>
-      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="nav-links" aria-expanded="false" data-nav-toggle>
-        <span></span><span></span>
-      </button>
-      <div class="nav-links" id="nav-links" data-nav-links>
-        <a href="#research">Research</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-download" href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener">CV</a>
-      </div>
-    </nav>
-  </header>
-  <main id="main">
-    <section id="top" class="hero" aria-labelledby="hero-title">
-      <div class="hero-content">
-        <p class="eyebrow">Peking University · Master’s student</p>
-        <h1 id="hero-title">Jiahe Xi</h1>
-        <p class="hero-copy">I study human mobility and activity chains using mobile phone signalling and travel surveys. My work also applies GeoAI to commercial catchments, service coverage and location decisions.</p>
-        <div class="hero-actions" aria-label="Primary links">
-          <a class="intro-email" href="mailto:xijiahe@stu.pku.edu.cn">xijiahe@stu.pku.edu.cn</a>
-          <a class="intro-cv" href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
-        </div>
-      </div>
-    </section>
-    <section id="research" class="section">
-      <div class="section-heading">
-        <p class="section-kicker">Research</p>
-        <h2>Three connected research directions</h2>
-      </div>
-      <div class="research-list" aria-label="Research interests">
-        <article>
-          <h3>Human Mobility</h3>
-          <p>Daily travel patterns, recurring destinations and the relationships between school journeys, work commutes and other activities.</p>
-          <a class="direction-link" href="#motivation-mobility">Research motivation</a>
-        </article>
-        <article>
-          <h3>Activity Chains</h3>
-          <p>Bayesian activity inference, sequence analysis and household travel coordination, with explicit attention to uncertainty in signalling records.</p>
-          <a class="direction-link" href="#motivation-chains">Research motivation</a>
-        </article>
-        <article>
-          <h3>GeoAI &amp; Site Selection</h3>
-          <p>POI and footfall analysis, commercial catchments, service coverage and route evaluation using geospatial data and Google Maps APIs.</p>
-          <a class="direction-link" href="#motivation-geoai">Research motivation</a>
-        </article>
-      </div>
-      <div class="motivation-block" aria-labelledby="motivation-title">
-        <div class="motivation-heading"><p class="section-kicker">Research Motivation</p><h3 id="motivation-title">The questions I want to understand</h3></div>
-        <article class="motivation-row" id="motivation-mobility">
-          <h4>Human Mobility</h4>
-          <div><h5>How do everyday constraints shape the journeys people make?</h5>
-          <p>My own school commutes and later move to Beijing made travel time and accessibility tangible questions. I want to understand how residence, work schedules, school obligations and household responsibilities organise daily movement, and how these individual decisions contribute to congestion and unequal access to opportunities.</p></div>
-        </article>
-        <article class="motivation-row" id="motivation-chains">
-          <h4>Activity Chains</h4>
-          <div><h5>What can incomplete observations tell us about daily activities?</h5>
-          <p>Working with coarse mobile phone signalling records led me to ask what we can learn about activities when locations and destinations remain uncertain. I aim to infer activity purposes and recurring structures across days while preserving uncertainty, individual variation and the coordination between household members. I also want to examine which activity information can be retained without reconstructing precise individual movements.</p></div>
-        </article>
-        <article class="motivation-row" id="motivation-geoai">
-          <h4>GeoAI &amp; Site Selection</h4>
-          <div><h5>How can geographic evidence support better location decisions?</h5>
-          <p>Public-space assessment and mapping applications made me interested in how places function within people's daily lives. I aim to combine mobility observations, POIs, imagery and transport networks to evaluate accessibility, commercial catchments and service gaps. Differences in data availability and quality motivate me to examine how these analyses remain reliable across cities, especially where direct mobility observations are scarce.</p></div>
-        </article>
-      </div>
-      <article class="research-panel" aria-labelledby="thesis-title">
-        <div class="research-main">
-          <p class="panel-kicker">Master's thesis · 2025–2026</p>
-          <h3 id="thesis-title">Activity Semantics and School-Related Travel Chains</h3>
-          <p>I examine how school journeys and work commutes are coordinated within household activity chains, including how later commitments constrain earlier journeys. Stop timing, duration, recurrence and sequence position inform Bayesian activity inference. Month-long mobility profiles capture overlapping behavioural tendencies and dependencies between daily activities.</p>
-        </div>
-        <dl class="research-facts">
-          <div><dt>Data</dt><dd>Mobile phone signalling and travel-survey diaries</dd></div>
-          <div><dt>Methods</dt><dd>Bayesian activity inference and soft mobility profiling</dd></div>
-          <div><dt>Focus</dt><dd>School-related journeys and household coordination</dd></div>
-        </dl>
-      </article>
-    </section>
-    <section id="experience" class="section alt">
-      <div class="section-heading">
-        <p class="section-kicker">Selected Experience</p>
-        <h2>Mobility analysis and spatial applications</h2>
-      </div>
-      <div class="timeline">
-        <article class="timeline-item">
-          <div class="time">Jun 2026–present</div>
-          <div class="timeline-body">
-            <h3>Map AI Solutions Engineer Intern</h3>
-            <p class="meta">Master Concept · Google Maps Platform reseller · Hong Kong</p>
-            <ul><li>Integrate Google Maps mobility and site-selection APIs with developers; validate trajectories and derive footfall and delivery-service attributes from POI and trajectory data.</li><li>Configure Gemini Enterprise agents to query POI and footfall data through the Places Insights API, supporting commercial catchment and service-gap analysis.</li><li>Use SQL and BigQuery to compare routes by distance, travel time and service coverage under vehicle and stop constraints.</li></ul>
-          </div>
-        </article>
-        <article class="timeline-item">
-          <div class="time">2025</div>
-          <div class="timeline-body">
-            <h3>Urban Public Space Assessment and Park Service Analysis</h3>
-            <p class="meta">Research Assistant, Peking University · Hunan CSPON Programme</p>
-            <ul><li>Led street-view data collection and image analysis, using semantic segmentation, depth estimation and object detection to measure greenery, openness and facility visibility.</li><li>Modelled park service provision using visitation flows, distance decay, supply capacity and demand estimates; prepared maps of spatial variation in service provision.</li></ul>
-          </div>
-        </article>
-        <article class="timeline-item">
-          <div class="time">2024</div>
-          <div class="timeline-body">
-            <h3>Spatiotemporal Knowledge Graphs for Urban Governance</h3>
-            <p class="meta">Research Assistant, Peking University</p>
-            <ul><li>Contributed to model fine-tuning for service-request classification and defined spatial and temporal attributes for a knowledge graph.</li><li>Used large language models for structured information extraction and examined classification and entity-linking errors, with applications to POI accuracy and navigation feedback.</li></ul>
-          </div>
-        </article>
-      </div>
-    </section>
-    <section id="education" class="section">
-      <div class="section-heading">
-        <p class="section-kicker">Education</p>
-        <h2>Academic background</h2>
-      </div>
-      <div class="timeline education-list">
-        <article class="timeline-item">
-          <div class="time">Sep 2023–Jan 2027</div>
-          <div class="timeline-body">
-            <h3>Peking University</h3>
-            <p class="meta">Master of Engineering · Expected graduation: January 2027</p>
-            <p>School of Architecture and Landscape Design. GPA: 3.7/4.0. Focus on spatiotemporal intelligence, human mobility and GeoAI.</p>
-          </div>
-        </article>
-        <article class="timeline-item">
-          <div class="time">2025</div>
-          <div class="timeline-body"><h3>RWTH Aachen University</h3><p>Transforming City Regions</p></div>
-        </article>
-        <article class="timeline-item">
-          <div class="time">Sep 2019–Jun 2023</div>
-          <div class="timeline-body"><h3>Beijing Forestry University</h3><p class="meta">Bachelor of Landscape Architecture</p><p>GPA: 86.2/100.</p></div>
-        </article>
-      </div>
-      <div class="methods-heading section-heading"><p class="section-kicker">Methods &amp; Tools</p></div>
-      <div class="skills-grid">
-        <div><h3>Programming &amp; Data</h3><p>Python, R, SQL and BigQuery; data processing and statistical analysis.</p></div>
-        <div><h3>Mobility Modelling</h3><p>Bayesian activity inference, activity-chain analysis, clustering and soft mobility profiling.</p></div>
-        <div><h3>Spatial Analysis</h3><p>ArcGIS/ArcPy, GeoDa and Google Maps APIs; POI analysis, catchments and spatial modelling.</p></div>
-        <div><h3>GeoAI</h3><p>Semantic segmentation, depth estimation and object detection; knowledge graphs and RAG.</p></div>
-      </div>
-    </section>
-    <section id="publications" class="section alt">
-      <div class="section-heading"><p class="section-kicker">Selected Outputs</p><h2>Publications, presentation &amp; patent</h2></div>
-      <ol class="publication-list">
-        <li><span class="publication-type">Conference presentation</span><strong>Xi, J.</strong>, &amp; Xu, L. (2027). How Institutional Anchors Organize Daily Mobility: Open-Pattern and Recurrent-Anchor Mechanisms in Kunming's Urban Flows. <em>TRB 106th Annual Meeting</em>, Washington, D.C. <span class="publication-status">Accepted for presentation</span></li>
-        <li><span class="publication-type">Journal article</span>Peng, J., <strong>Xi, J.</strong>, Ye, Y., Xu, L., &amp; Ye, J. (2025). Evaluating the quality of urban public space based on the scene perception theory. <em>Urban Development Studies</em>, 32(12), 84–91. <a href="https://doi.org/10.3969/j.issn.1006-3862.2025.12.021">DOI: 10.3969/j.issn.1006-3862.2025.12.021</a>.</li>
-        <li><span class="publication-type">Manuscript under review</span>Huang, K., Yin, J., <strong>Xi, J.</strong>, Ye, Y., &amp; Xu, L. (2026). Disentangling the Spatial and Preferential Aspects in the Value Realization of the Spatially Sensitive Ecosystem Service. <em>Ecosystem Health and Sustainability.</em> <span class="publication-status">Under review</span></li>
-        <li><span class="publication-type">Patent application</span>Ma, Z. H., Wen, N., Yao, D. Y., <strong>Xi, J.</strong>, et al. (2025). A method, device, and medium for evaluating the quality of public spaces based on multi-dimensional features. Chinese patent application No. CN 202510376867.</li>
-        <li><span class="publication-type">Journal article · Landscape history</span><strong>Xi, J.</strong>, &amp; Liu, Y. (2026). Scenery Borrowing from Within and Beyond: A Study on Viewing Landscape of Yuanmingyuan and Its Surrounding Areas in Emperor Qianlong’s Poems. <em>China City Planning Review</em>, 35(2), 76–88.</li>
-      </ol>
-    </section>
-    <section id="contact" class="section contact-section">
-      <div class="contact-layout">
-        <div>
-          <p class="section-kicker">Contact</p>
-          <h2>Research conversations</h2>
-          <p>I welcome PhD research opportunities and conversations about human mobility, activity-based travel analysis and GeoAI for location decisions.</p>
-          <a class="contact-email" href="mailto:xijiahe@stu.pku.edu.cn">xijiahe@stu.pku.edu.cn</a>
-        </div>
-        <div class="contact-actions"><a class="button primary" href="mailto:xijiahe@stu.pku.edu.cn">Email Me</a><a class="button secondary" href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener">Open CV</a></div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer"><p>Jiahe Xi · Human Mobility, Activity Chains &amp; GeoAI · Updated November 2026</p></footer>
-  <script src="assets/script.js"></script>
+<body class="bg-white text-[#334155] font-sans antialiased">
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#E2E8F0] transition-shadow duration-300">
+<nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+<a href="#top" class="text-navy font-extrabold text-lg tracking-tight hover:text-accent transition-colors">
+Jiahe Xi <span class="text-sm font-normal text-[#64748B]">/ Research</span>
+</a>
+<div class="hidden md:flex items-center gap-7 text-sm font-semibold text-[#334155]">
+<a href="#research" class="nav-link hover:text-accent transition-colors">Research</a>
+<a href="#thesis" class="nav-link hover:text-accent transition-colors">Thesis</a>
+<a href="#experience" class="nav-link hover:text-accent transition-colors">Experience</a>
+<a href="#education" class="nav-link hover:text-accent transition-colors">Education</a>
+<a href="#publications" class="nav-link hover:text-accent transition-colors">Publications</a>
+<a href="#contact" class="nav-link hover:text-accent transition-colors">Contact</a>
+<a href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-4 py-2 bg-navy text-white rounded-md hover:bg-navy-light transition-colors text-sm font-semibold">
+CV (PDF)
+<svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h8v8"/><path d="M14 2L6 10"/></svg>
+</a>
+</div>
+<button type="button" id="nav-toggle" aria-controls="mobile-nav" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg border border-[#E2E8F0] bg-white" aria-label="Toggle navigation" aria-expanded="false">
+<span class="block w-5 h-0.5 bg-navy transition-transform duration-200 origin-center" id="bar1"></span>
+<span class="block w-5 h-0.5 bg-navy transition-transform duration-200 origin-center" id="bar2"></span>
+</button>
+</nav>
+<div id="mobile-nav" class="mobile-nav md:hidden bg-white border-t border-[#E2E8F0]">
+<div class="px-6 py-4 flex flex-col gap-3 text-sm font-semibold text-[#334155]">
+<a href="#research" class="py-2 hover:text-accent transition-colors mobile-link">Research</a>
+<a href="#thesis" class="py-2 hover:text-accent transition-colors mobile-link">Thesis</a>
+<a href="#experience" class="py-2 hover:text-accent transition-colors mobile-link">Experience</a>
+<a href="#education" class="py-2 hover:text-accent transition-colors mobile-link">Education</a>
+<a href="#publications" class="py-2 hover:text-accent transition-colors mobile-link">Publications</a>
+<a href="#contact" class="py-2 hover:text-accent transition-colors mobile-link">Contact</a>
+<a href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 w-max px-4 py-2 bg-navy text-white rounded-md text-sm font-semibold mt-1">
+CV (PDF)
+<svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h8v8"/><path d="M14 2L6 10"/></svg>
+</a>
+</div>
+</div>
+</header>
+<main id="main">
+<section id="top" class="relative flex items-center overflow-hidden bg-white pt-16 hero-compact">
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+<defs>
+<pattern id="hero-grid" width="64" height="64" patternUnits="userSpaceOnUse">
+<path d="M64 0H0V64" stroke="#0F2942" stroke-opacity="0.04" stroke-width="0.5"/>
+</pattern>
+</defs>
+<rect width="1440" height="900" fill="url(#hero-grid)"/>
+<g stroke="#0F2942" stroke-opacity="0.06" stroke-width="1.5">
+<path d="M180 120 L340 280 L520 240 L680 380 L820 320 L960 440"/>
+<path d="M100 400 L280 350 L440 480 L600 420 L780 540 L920 480 L1100 560"/>
+<path d="M200 600 L380 540 L520 640 L700 580 L860 680 L1020 620 L1200 700"/>
+<path d="M340 180 L480 320 L640 260 L800 400 L960 340 L1120 460"/>
+<path d="M60 280 L220 420 L400 360 L560 500 L740 440 L900 560"/>
+<path d="M440 80 L580 220 L740 160 L900 300 L1060 240 L1220 360"/>
+<path d="M140 700 L320 640 L480 740 L660 680 L840 780"/>
+<path d="M500 340 L660 480 L820 420 L980 560 L1140 500 L1300 620"/>
+<path d="M260 500 L420 440 L580 560 L740 500 L900 620 L1060 560"/>
+<path d="M80 160 L240 300 L400 240 L560 380 L720 320"/>
+</g>
+<g stroke="#0284C7" stroke-opacity="0.06" stroke-width="1" fill="none">
+<path d="M300 200 Q500 100 700 300"/>
+<path d="M500 400 Q750 280 1000 500"/>
+<path d="M200 500 Q450 380 700 550"/>
+<path d="M600 150 Q850 50 1100 250"/>
+<path d="M150 650 Q400 530 650 700"/>
+<path d="M800 200 Q1000 100 1200 350"/>
+</g>
+<g fill="#0F2942" fill-opacity="0.07">
+<circle cx="340" cy="280" r="5"/><circle cx="520" cy="240" r="4"/>
+<circle cx="680" cy="380" r="6"/><circle cx="820" cy="320" r="4.5"/>
+<circle cx="960" cy="440" r="5"/><circle cx="280" cy="350" r="4"/>
+<circle cx="440" cy="480" r="5.5"/><circle cx="600" cy="420" r="4"/>
+<circle cx="780" cy="540" r="5"/><circle cx="920" cy="480" r="4.5"/>
+<circle cx="1100" cy="560" r="5"/><circle cx="380" cy="540" r="4"/>
+<circle cx="520" cy="640" r="5"/><circle cx="700" cy="580" r="4.5"/>
+<circle cx="860" cy="680" r="5"/><circle cx="480" cy="320" r="4"/>
+<circle cx="640" cy="260" r="5.5"/><circle cx="800" cy="400" r="4"/>
+<circle cx="740" cy="160" r="4"/><circle cx="900" cy="300" r="5"/>
+<circle cx="1060" cy="240" r="4"/><circle cx="580" cy="220" r="4.5"/>
+</g>
+<g stroke="#0F2942" stroke-opacity="0.05" fill="none" stroke-width="1">
+<circle cx="680" cy="380" r="16"/><circle cx="680" cy="380" r="28"/>
+<circle cx="960" cy="440" r="14"/><circle cx="960" cy="440" r="24"/>
+<circle cx="440" cy="480" r="12"/><circle cx="440" cy="480" r="20"/>
+</g>
+</svg>
+<div class="relative z-10 w-full max-w-6xl mx-auto px-6 py-12 md:py-12">
+<div class="max-w-3xl">
+<div class="flex flex-wrap items-center gap-3 mb-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-mono font-medium tracking-wide bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
+PEKING UNIVERSITY · MASTER'S RESEARCHER
+</span>
+<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-mono font-medium tracking-wide bg-accent-light text-navy-light border border-[#BFDBFE]">
+<span class="w-1.5 h-1.5 rounded-full bg-accent mr-2"></span>
+Open to PhD Opportunities (2027)
+</span>
+</div>
+<h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-none mb-4">
+Jiahe Xi
+</h1>
+<p class="text-lg sm:text-xl font-semibold text-accent tracking-wide mb-6">
+Human Mobility · Activity Chains · GeoAI
+</p>
+<p class="text-base sm:text-lg leading-relaxed text-[#334155] max-w-xl mb-8">
+I study how people move through cities — inferring daily activity chains from mobile-phone signals, and applying GeoAI to location intelligence and urban planning.
+</p>
+<div class="flex flex-wrap items-center gap-3">
+<a href="mailto:xijiahe@stu.pku.edu.cn" class="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white rounded-lg font-semibold text-sm hover:bg-navy-light transition-colors shadow-sm">
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 6l8 5 8-5"/></svg>
+Email Me
+</a>
+<div class="relative">
+<button type="button" id="copy-email-btn" aria-label="Copy email address" aria-describedby="copy-toast" class="inline-flex items-center gap-1.5 px-3 py-3 rounded-lg border border-[#E2E8F0] bg-white text-[#64748B] hover:border-accent hover:text-accent transition-colors text-sm" title="Copy email address">
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="10" height="12" rx="1.5"/><path d="M4 14V4a2 2 0 012-2h8"/></svg>
+</button>
+<span role="status" aria-live="polite" id="copy-toast" class="copy-toast absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-navy text-white text-sm font-mono rounded-md whitespace-nowrap shadow-lg"></span>
+</div>
+<a href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[#E2E8F0] bg-white text-navy font-semibold text-sm hover:border-navy hover:bg-[#F8FAFC] transition-colors">
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10m0 0l-3-3m3 3l3-3"/><path d="M3 14v2a2 2 0 002 2h10a2 2 0 002-2v-2"/></svg>
+Download CV
+</a>
+</div>
+</div>
+</div>
+</section>
+<section id="research" class="py-12 md:py-14 bg-[#F8FAFC] border-t border-[#E2E8F0]">
+<div class="max-w-6xl mx-auto px-6">
+<header class="mb-12">
+<div class="flex items-center gap-3 mb-3">
+<svg class="w-5 h-5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3 8M16 7.5l-3 8M8.5 6h7"/></svg>
+<span class="text-sm font-mono font-medium tracking-widest text-[#64748B] uppercase">Research</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">Three Connected Directions</h2>
+</header>
+<div class="grid md:grid-cols-3 gap-6 mb-10">
+<article class="research-card bg-white border border-[#E2E8F0] rounded-xl p-7">
+<div class="mb-5">
+<svg class="w-10 h-10 text-navy" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="8" cy="24" r="4" fill="#EFF6FF" stroke="#0F2942"/><circle cx="40" cy="24" r="4" fill="#EFF6FF" stroke="#0F2942"/>
+<path d="M12 24 C20 12, 28 36, 36 24" stroke="#0F2942"/>
+<circle cx="20" cy="18" r="2" fill="#0284C7" fill-opacity="0.3" stroke="#0284C7" stroke-width="1"/>
+<circle cx="28" cy="30" r="2" fill="#0284C7" fill-opacity="0.3" stroke="#0284C7" stroke-width="1"/>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-[#0F172A] mb-2">Human Mobility</h3>
+<p class="italic text-base text-accent mb-3">"How do daily schedules and household obligations shape urban travel?"</p>
+<p class="motivation-context text-sm text-[#64748B] leading-relaxed mb-4">My own school commutes and later move to Beijing made travel time and accessibility tangible questions. I want to understand how household responsibilities and spatial constraints organise everyday movement.</p>
+<ul class="space-y-2 text-base text-[#334155] leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span><span class="min-w-0 flex-1">Daily travel patterns &amp; recurring destinations</span></li>
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span><span class="min-w-0 flex-1">Coupling between school journeys, work commutes, and daily activities</span></li>
+</ul>
+</article>
+<article class="research-card bg-white border border-[#E2E8F0] rounded-xl p-7">
+<div class="mb-5">
+<svg class="w-10 h-10 text-navy" viewBox="0 0 48 48" fill="none" stroke="#0F2942" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="8" cy="24" r="3.5" fill="#EFF6FF"/><circle cx="20" cy="14" r="3.5" fill="#EFF6FF"/>
+<circle cx="32" cy="28" r="3.5" fill="#EFF6FF"/><circle cx="42" cy="18" r="3.5" fill="#EFF6FF"/>
+<path d="M11 22l6-6M23 16l6 10M35 26l4-6"/>
+<path d="M8 28v8M20 18v14M32 32v4" stroke="#0284C7" stroke-width="1" stroke-dasharray="2 2"/>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-[#0F172A] mb-2">Activity Chains</h3>
+<p class="italic text-base text-accent mb-3">"What behavioural patterns can we infer from coarse, uncertain signalling data?"</p>
+<p class="motivation-context text-sm text-[#64748B] leading-relaxed mb-4">Working with coarse signalling records led me to ask what activity information remains useful when locations are uncertain. I aim to preserve recurring structures, household coordination and individual variation without requiring precise reconstruction of every movement.</p>
+<ul class="space-y-2 text-base text-[#334155] leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span><span class="min-w-0 flex-1">Bayesian activity inference &amp; sequence analysis</span></li>
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span><span class="min-w-0 flex-1">Household travel coordination under signalling uncertainty</span></li>
+</ul>
+</article>
+<article class="research-card bg-white border border-[#E2E8F0] rounded-xl p-7">
+<div class="mb-5">
+<svg class="w-10 h-10 text-navy" viewBox="0 0 48 48" fill="none" stroke="#0F2942" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<rect x="6" y="10" width="36" height="28" rx="3" fill="#EFF6FF"/>
+<path d="M6 22h36M6 34h36M18 10v28M30 10v28" stroke-opacity="0.5"/>
+<circle cx="24" cy="22" r="5" stroke="#0284C7" stroke-width="1.5" fill="#0284C7" fill-opacity="0.12"/>
+<circle cx="24" cy="22" r="2" fill="#0284C7"/>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-[#0F172A] mb-2">GeoAI &amp; Site Selection</h3>
+<p class="italic text-base text-accent mb-3">"How can spatial intelligence evaluate urban accessibility and guide location decisions?"</p>
+<p class="motivation-context text-sm text-[#64748B] leading-relaxed mb-4">Public-space assessment and mapping projects made me interested in how places function within daily activity systems. I aim to connect heterogeneous geographic evidence to location decisions, while accounting for differences in data availability and quality across cities.</p>
+<ul class="space-y-2 text-base text-[#334155] leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span><span class="min-w-0 flex-1">POI &amp; footfall analytics, commercial catchments</span></li>
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span><span class="min-w-0 flex-1">Service coverage &amp; route evaluation via geospatial data and Google Maps APIs</span></li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<section id="thesis" class="py-16 md:py-20 bg-white border-t border-[#E2E8F0]">
+<div class="max-w-6xl mx-auto px-6">
+<article class="bg-[#F0F4F8] border-l-4 border-navy rounded-xl p-8 md:p-10">
+<span class="inline-block text-sm font-mono font-medium tracking-widest text-[#64748B] uppercase mb-3">Master's Thesis · 2025–2026</span>
+<h2 class="text-xl sm:text-2xl font-bold text-[#0F172A] tracking-tight mb-4">
+Activity Semantics and School-Related Travel Chains
+</h2>
+<p class="text-[#334155] leading-relaxed max-w-3xl mb-8">
+How school journeys and work commutes are coordinated within household activity chains — using Bayesian inference on mobile phone signalling to capture overlapping behavioural tendencies across a full month of observations.
+</p>
+<div class="grid sm:grid-cols-3 gap-6 pt-6 border-t border-[#D6DEE6]">
+<div>
+<dt class="text-sm font-mono font-medium tracking-widest text-accent uppercase mb-1">Data</dt>
+<dd class="text-base text-[#334155] leading-relaxed">Mobile phone signalling and travel-survey diaries</dd>
+</div>
+<div>
+<dt class="text-sm font-mono font-medium tracking-widest text-accent uppercase mb-1">Methods</dt>
+<dd class="text-base text-[#334155] leading-relaxed">Bayesian activity inference and soft mobility profiling</dd>
+</div>
+<div>
+<dt class="text-sm font-mono font-medium tracking-widest text-accent uppercase mb-1">Focus</dt>
+<dd class="text-base text-[#334155] leading-relaxed">School-related journeys and household coordination</dd>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section id="experience" class="py-12 md:py-14 bg-[#F8FAFC] border-t border-[#E2E8F0]">
+<div class="max-w-6xl mx-auto px-6">
+<header class="mb-12">
+<div class="flex items-center gap-3 mb-3">
+<svg class="w-5 h-5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+<span class="text-sm font-mono font-medium tracking-widest text-[#64748B] uppercase">Selected Experience</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">Mobility Analysis &amp; Spatial Applications</h2>
+</header>
+<div class="space-y-0">
+<article class="grid md:grid-cols-[180px_1fr] gap-x-8 gap-y-1 py-8 border-b border-[#E2E8F0]">
+<div class="flex flex-col">
+<span class="font-mono text-sm text-[#64748B]">Jun 2026 – present</span>
+<span class="font-mono text-sm text-[#94A3B8] mt-1 hidden md:block">Hong Kong</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-[#0F172A] mb-1">Map AI Solutions Engineer Intern</h3>
+<p class="text-sm text-[#64748B] mb-3 italic">Master Concept · Google Maps Platform Reseller · Hong Kong</p>
+<ul class="space-y-2 text-base text-[#334155] leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1 h-1 rounded-full bg-[#CBD5E1] flex-shrink-0"></span><span class="min-w-0 flex-1">Integrate Google Maps mobility and site-selection APIs; validate trajectories and derive footfall attributes from POI data.</span></li>
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1 h-1 rounded-full bg-[#CBD5E1] flex-shrink-0"></span><span class="min-w-0 flex-1">Configure <strong class="text-[#0F172A]">Gemini Enterprise</strong> agents to query POI and footfall data through the <strong class="text-[#0F172A]">Places Insights API</strong>.</span></li>
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1 h-1 rounded-full bg-[#CBD5E1] flex-shrink-0"></span><span class="min-w-0 flex-1">Use <strong class="text-[#0F172A]">SQL</strong> and <strong class="text-[#0F172A]">BigQuery</strong> to compare routes by distance, travel time, and service coverage under vehicle constraints.</span></li>
+</ul>
+</div>
+</article>
+<article class="grid md:grid-cols-[180px_1fr] gap-x-8 gap-y-1 py-8 border-b border-[#E2E8F0]">
+<div class="flex flex-col">
+<span class="font-mono text-sm text-[#64748B]">2025</span>
+<span class="font-mono text-sm text-[#94A3B8] mt-1 hidden md:block">Beijing</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-[#0F172A] mb-1">Urban Public Space Assessment &amp; Park Service Analysis</h3>
+<p class="text-sm text-[#64748B] mb-3 italic">Research Assistant · Peking University · Hunan CSPON Programme</p>
+<ul class="space-y-2 text-base text-[#334155] leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1 h-1 rounded-full bg-[#CBD5E1] flex-shrink-0"></span><span class="min-w-0 flex-1">Led street-view data collection using <strong class="text-[#0F172A]">semantic segmentation</strong>, <strong class="text-[#0F172A]">depth estimation</strong>, and <strong class="text-[#0F172A]">object detection</strong>.</span></li>
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1 h-1 rounded-full bg-[#CBD5E1] flex-shrink-0"></span><span class="min-w-0 flex-1">Modelled park service provision using visitation flows, distance decay, and demand estimates.</span></li>
+</ul>
+</div>
+</article>
+<article class="grid md:grid-cols-[180px_1fr] gap-x-8 gap-y-1 py-8">
+<div class="flex flex-col">
+<span class="font-mono text-sm text-[#64748B]">2024</span>
+<span class="font-mono text-sm text-[#94A3B8] mt-1 hidden md:block">Beijing</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-[#0F172A] mb-1">Spatiotemporal Knowledge Graphs for Urban Governance</h3>
+<p class="text-sm text-[#64748B] mb-3 italic">Research Assistant · Peking University</p>
+<ul class="space-y-2 text-base text-[#334155] leading-relaxed">
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1 h-1 rounded-full bg-[#CBD5E1] flex-shrink-0"></span><span class="min-w-0 flex-1">Contributed to model fine-tuning for service-request classification and defined spatial attributes for a <strong class="text-[#0F172A]">knowledge graph</strong>.</span></li>
+<li class="flex items-start gap-2">
+<span class="mt-1.5 w-1 h-1 rounded-full bg-[#CBD5E1] flex-shrink-0"></span><span class="min-w-0 flex-1">Used <strong class="text-[#0F172A]">LLMs</strong> for structured extraction; examined classification and entity-linking errors for POI accuracy.</span></li>
+</ul>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section id="education" class="py-12 md:py-14 bg-white border-t border-[#E2E8F0]">
+<div class="max-w-6xl mx-auto px-6">
+<header class="mb-12">
+<div class="flex items-center gap-3 mb-3">
+<svg class="w-5 h-5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M2 9v8l10 6 10-6V9"/></svg>
+<span class="text-sm font-mono font-medium tracking-widest text-[#64748B] uppercase">Education</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">Academic Background</h2>
+</header>
+<div class="space-y-0 mb-16">
+<article class="grid md:grid-cols-[180px_1fr] gap-x-8 gap-y-1 py-7 border-b border-[#E2E8F0]">
+<span class="font-mono text-sm text-[#64748B]">Sep 2023–Jan 2027</span>
+<div>
+<h3 class="text-base font-bold text-[#0F172A]">Peking University</h3>
+<p class="text-sm text-accent font-semibold mt-0.5">Master of Engineering</p>
+<p class="text-base text-[#334155] mt-2 leading-relaxed">
+School of Architecture &amp; Landscape Design · <strong class="text-[#0F172A]">GPA 3.7/4.0</strong> · Focus: spatiotemporal intelligence, human mobility, GeoAI
+</p>
+</div>
+</article>
+<article class="grid md:grid-cols-[180px_1fr] gap-x-8 gap-y-1 py-7 border-b border-[#E2E8F0]">
+<span class="font-mono text-sm text-[#64748B]">2025</span>
+<div>
+<h3 class="text-base font-bold text-[#0F172A]">RWTH Aachen University</h3>
+<p class="text-sm text-accent font-semibold mt-0.5">Exchange</p>
+<p class="text-base text-[#334155] mt-2 leading-relaxed">Transforming City Regions</p>
+</div>
+</article>
+<article class="grid md:grid-cols-[180px_1fr] gap-x-8 gap-y-1 py-7">
+<span class="font-mono text-sm text-[#64748B]">2019 – 2023</span>
+<div>
+<h3 class="text-base font-bold text-[#0F172A]">Beijing Forestry University</h3>
+<p class="text-sm text-accent font-semibold mt-0.5">Bachelor of Landscape Architecture</p>
+<p class="text-base text-[#334155] mt-2 leading-relaxed"><strong class="text-[#0F172A]">GPA 86.2/100</strong></p>
+</div>
+</article>
+</div>
+<div>
+<div class="flex items-center gap-3 mb-5">
+<svg class="w-5 h-5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94L6 21l-3-3 7.47-7.47a6 6 0 017.94-7.94l-3.71 3.71z"/></svg>
+<span class="text-sm font-mono font-medium tracking-widest text-[#64748B] uppercase">Methods &amp; Tools</span>
+</div>
+<div class="space-y-5">
+<div><h3 class="text-sm font-semibold text-[#64748B] mb-3">Programming &amp; Data</h3><div class="flex flex-wrap gap-2.5"><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">Python</span><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">R</span><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">SQL / BigQuery</span></div></div>
+<div><h3 class="text-sm font-semibold text-[#64748B] mb-3">Spatial Analysis</h3><div class="flex flex-wrap gap-2.5"><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">ArcGIS / ArcPy</span><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">Google Maps APIs</span><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">GeoDa</span></div></div>
+<div><h3 class="text-sm font-semibold text-[#64748B] mb-3">Mobility &amp; GeoAI</h3><div class="flex flex-wrap gap-2.5"><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">Bayesian Inference</span><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">Activity-Chain Analysis</span><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">Semantic Segmentation</span><span class="skill-pill px-4 py-1.5 rounded-full text-sm font-medium font-mono text-navy border border-[#D1D9E6] bg-[#F8FAFC] cursor-default">Knowledge Graphs</span></div></div>
+</div>
+</div>
+</div>
+</section>
+<section id="publications" class="py-12 md:py-14 bg-[#F8FAFC] border-t border-[#E2E8F0]">
+<div class="max-w-6xl mx-auto px-6">
+<header class="mb-12">
+<div class="flex items-center gap-3 mb-3">
+<svg class="w-5 h-5 text-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 8h16M8 4v16"/></svg>
+<span class="text-sm font-mono font-medium tracking-widest text-[#64748B] uppercase">Selected Outputs</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">Publications, Presentation &amp; Patent</h2>
+</header>
+<ol class="space-y-0">
+<li class="py-6 border-b border-[#E2E8F0]">
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="inline-block px-2.5 py-0.5 rounded text-sm font-mono font-semibold tracking-wider uppercase bg-navy text-white">Conference</span>
+<span class="inline-block px-2.5 py-0.5 rounded text-sm font-mono font-semibold tracking-wider uppercase bg-accent-light text-navy border border-[#BFDBFE]">Accepted for presentation</span>
+</div>
+<p class="text-base text-[#334155] leading-relaxed">
+<strong class="text-[#0F172A]">Xi, J.</strong>, &amp; Xu, L. (2027). How Institutional Anchors Organize Daily Mobility: Open-Pattern and Recurrent-Anchor Mechanisms in Kunming's Urban Flows. <em>TRB 106th Annual Meeting</em>, Washington, D.C.
+</p>
+</li>
+<li class="py-6 border-b border-[#E2E8F0]">
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="inline-block px-2.5 py-0.5 rounded text-sm font-mono font-semibold tracking-wider uppercase bg-navy text-white">Journal</span>
+</div>
+<p class="text-base text-[#334155] leading-relaxed">
+Peng, J., <strong class="text-[#0F172A]">Xi, J.</strong>, Ye, Y., Xu, L., &amp; Ye, J. (2025). Evaluating the quality of urban public space based on the scene perception theory. <em>Urban Development Studies</em>, 32(12), 84–91.
+<a href="https://doi.org/10.3969/j.issn.1006-3862.2025.12.021" target="_blank" rel="noopener" class="inline-flex items-center gap-1 ml-1 text-accent hover:text-accent-hover font-semibold transition-colors">
+DOI <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 3h8v8M13 3 3 13"/></svg>
+</a>
+</p>
+</li>
+<li class="py-6 border-b border-[#E2E8F0]">
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="inline-block px-2.5 py-0.5 rounded text-sm font-mono font-semibold tracking-wider uppercase bg-[#FEF3C7] text-[#92400E]">Under Review</span>
+</div>
+<p class="text-base text-[#334155] leading-relaxed">
+Huang, K., Yin, J., <strong class="text-[#0F172A]">Xi, J.</strong>, Ye, Y., &amp; Xu, L. (2026). Disentangling the Spatial and Preferential Aspects in the Value Realization of the Spatially Sensitive Ecosystem Service. <em>Ecosystem Health and Sustainability.</em>
+</p>
+</li>
+<li class="py-6 border-b border-[#E2E8F0]">
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="inline-block px-2.5 py-0.5 rounded text-sm font-mono font-semibold tracking-wider uppercase bg-[#F0FDF4] text-[#166534] border border-[#BBF7D0]">Patent application</span>
+</div>
+<p class="text-base text-[#334155] leading-relaxed">
+Ma, Z. H., Wen, N., Yao, D. Y., <strong class="text-[#0F172A]">Xi, J.</strong>, et al. (2025). A method, device, and medium for evaluating the quality of public spaces based on multi-dimensional features. <span class="font-mono text-sm text-[#64748B]">CN 202510376867</span>.
+</p>
+</li>
+<li class="py-6">
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="inline-block px-2.5 py-0.5 rounded text-sm font-mono font-semibold tracking-wider uppercase bg-navy text-white">Journal</span>
+</div>
+<p class="text-base text-[#334155] leading-relaxed">
+<strong class="text-[#0F172A]">Xi, J.</strong>, &amp; Liu, Y. (2026). Scenery Borrowing from Within and Beyond: A Study on Viewing Landscape of Yuanmingyuan and Its Surrounding Areas in Emperor Qianlong's Poems. <em>China City Planning Review</em>, 35(2), 76–88.
+</p>
+</li>
+</ol>
+</div>
+</section>
+</main>
+<footer id="contact" class="bg-navy text-white">
+<div class="max-w-6xl mx-auto px-6 py-12 md:py-14">
+<div class="grid md:grid-cols-[1fr_auto] gap-10 items-center mb-16">
+<div>
+<span class="inline-block text-sm font-mono font-medium tracking-widest text-accent uppercase mb-3">Contact</span>
+<h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4">Let's Connect</h2>
+<p class="text-[#94A3B8] leading-relaxed max-w-lg">
+I welcome PhD opportunities (2027) and conversations about human mobility, activity-based travel analysis, and GeoAI for location decisions.
+</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<a href="mailto:xijiahe@stu.pku.edu.cn" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-navy rounded-lg font-semibold text-sm hover:bg-[#0369A1] hover:text-white transition-colors">
+<svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 6l8 5 8-5"/></svg>
+xijiahe@stu.pku.edu.cn
+</a>
+<a href="assets/JiaheXi_CV.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[#334155] text-[#94A3B8] font-semibold text-sm hover:border-accent hover:text-accent transition-colors">
+Open CV
+<svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h8v8"/><path d="M14 2L6 10"/></svg>
+</a>
+</div>
+</div>
+<div class="pt-8 border-t border-[#1E3A5F]">
+<p class="text-sm font-mono text-[#64748B] text-center tracking-wide">
+Jiahe Xi · Human Mobility, Activity Chains &amp; GeoAI · Updated November 2026
+</p>
+</div>
+</div>
+</footer>
+<script>
+// ── Header shadow on scroll ──
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+header.classList.toggle('shadow-sm', window.scrollY > 10);
+}, { passive: true });
+// ── Mobile nav toggle ──
+const navToggle = document.getElementById('nav-toggle');
+const mobileNav = document.getElementById('mobile-nav');
+const bar1 = document.getElementById('bar1');
+const bar2 = document.getElementById('bar2');
+navToggle.addEventListener('click', () => {
+const isOpen = mobileNav.classList.toggle('open');
+navToggle.setAttribute('aria-expanded', String(isOpen));
+if (isOpen) {
+bar1.style.transform = 'translateY(4px) rotate(45deg)';
+bar2.style.transform = 'translateY(-4px) rotate(-45deg)';
+} else {
+bar1.style.transform = '';
+bar2.style.transform = '';
+}
+});
+// Close mobile nav on link click
+document.querySelectorAll('.mobile-link').forEach(link => {
+link.addEventListener('click', () => {
+mobileNav.classList.remove('open');
+navToggle.setAttribute('aria-expanded', 'false');
+bar1.style.transform = '';
+bar2.style.transform = '';
+});
+});
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+mobileNav.classList.remove('open');
+navToggle.setAttribute('aria-expanded', 'false');
+bar1.style.transform = '';
+bar2.style.transform = '';
+navToggle.focus();
+}
+});
+// Auto-close on desktop resize
+window.matchMedia('(min-width: 1100px)').addEventListener('change', (e) => {
+if (e.matches) {
+mobileNav.classList.remove('open');
+navToggle.setAttribute('aria-expanded', 'false');
+bar1.style.transform = '';
+bar2.style.transform = '';
+}
+});
+// Clipboard failures are reported rather than shown as a successful copy.
+let copyTimer;
+document.getElementById('copy-email-btn').addEventListener('click', async () => {
+const toast = document.getElementById('copy-toast');
+clearTimeout(copyTimer);
+try {
+await navigator.clipboard.writeText('xijiahe@stu.pku.edu.cn');
+toast.textContent = 'Copied!';
+} catch {
+toast.textContent = 'Copy manually: xijiahe@stu.pku.edu.cn';
+}
+toast.classList.add('show');
+copyTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+});
+// ── Active nav highlight on scroll ──
+const sections = document.querySelectorAll('section[id], footer[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const observerOptions = { rootMargin: '-80px 0px -60% 0px', threshold: 0 };
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+const id = entry.target.id;
+navLinks.forEach(link => {
+const active = link.getAttribute('href') === '#' + id;
+link.classList.toggle('active', active);
+if (active) link.setAttribute('aria-current', 'location');
+else link.removeAttribute('aria-current');
+});
+}
+});
+}, observerOptions);
+sections.forEach(section => observer.observe(section));
+</script>
 </body>
 </html>
