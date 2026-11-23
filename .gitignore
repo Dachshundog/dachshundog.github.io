@@ -1,0 +1,13 @@
+# Publish only the website. Application materials and local previews stay local.
+/*
+!/.gitignore
+!/.nojekyll
+!/index.html
+!/README.md
+!/assets/
+/assets/*
+!/assets/styles.css
+!/assets/script.js
+!/assets/favicon.svg
+!/assets/mobility-network.svg
+!/assets/JiaheXi_CV.pdf
