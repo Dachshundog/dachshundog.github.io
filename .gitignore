@@ -1,13 +1,29 @@
-# Publish only the website. Application materials and local previews stay local.
+# Publish only the website. Private application material stays local.
 /*
 !/.gitignore
 !/.nojekyll
-!/index.html
 !/README.md
+!/index.html
+!/cv.html
+!/projects.html
+!/publications.html
+!/project-activity-chains.html
+!/project-geoai-site-selection.html
+!/project-public-space.html
+!/project-knowledge-graphs.html
+!/project-community-fieldwork.html
 !/assets/
 /assets/*
-!/assets/styles.css
-!/assets/script.js
+!/assets/academic.css
+!/assets/academic.js
+!/assets/profile.jpg
+!/assets/mobility-methods.png
+!/assets/yuanmingyuan-map.png
+!/assets/park-services.png
+!/assets/public-space-paper.png
+!/assets/patent-certificate.png
+!/assets/site-selection.svg
+!/assets/knowledge-graph.svg
+!/assets/community-planning.svg
 !/assets/favicon.svg
-!/assets/mobility-network.svg
 !/assets/JiaheXi_CV.pdf

@@ -1,23 +1,18 @@
-# Jiahe Xi GitHub Pages Site
+# Jiahe Xi academic website
 
-Static academic homepage for Jiahe Xi, focused on human mobility, activity chains, GeoAI and commercial site selection. Content follows the October 2026 SUAD CV and the supplied general PhD CV.
+Static academic portfolio at https://dachshundog.github.io/.
 
-## Deploy on GitHub Pages
+## Pages
 
-1. Use the GitHub repository `Dachshundog/dachshundog.github.io`.
-2. Commit the website files listed below. The root `.gitignore` allows only these website files; local proposals, older CVs, caches and previews are excluded.
-3. In GitHub, open `Settings -> Pages`.
-4. Set the source to `Deploy from a branch`, select `main`, and choose `/root`.
-5. Visit `https://dachshundog.github.io/` after GitHub finishes deployment.
+- `index.html`: biography, portrait and three research interests with motivations.
+- `cv.html`: education, experience, methods, activities and honors.
+- `projects.html`: illustrated projects and activities, linked to five detail pages.
+- `publications.html`: illustrated outputs, with TRB first and historical landscape research last.
 
-## Files
+Shared styles and navigation are in `assets/academic.css` and `assets/academic.js`. The downloadable CV is `assets/JiaheXi_CV.pdf`. Figure excerpts come from the supplied research materials; conceptual project illustrations are labelled as schematics. The original supplied portrait is `assets/profile.jpg`.
 
-- `index.html`: homepage content.
-- `assets/styles.css`: responsive styling.
-- `assets/script.js`: mobile navigation and header behaviour.
-- `assets/JiaheXi_CV.pdf`: downloadable copy of the supplied SUAD CV.
-- `assets/mobility-network.svg`: abstract decorative activity network, not an empirical map.
-- `assets/favicon.svg`: site icon.
-- `.nojekyll`: serves the static files directly on GitHub Pages.
+## Preview and deploy
 
-For a local preview, serve the website files with a static HTTP server. No build step or external dependencies are required.
+Serve these HTML files and `assets/` with a static HTTP server. No build is required. Fonts use Google Fonts, with system fallbacks.
+
+Publish only the files allowed by `.gitignore` to `Dachshundog/dachshundog.github.io`, branch `main`. GitHub Pages serves the repository root; `.nojekyll` keeps it a plain static website. Local CV drafts, statements, backups and previews are excluded.
