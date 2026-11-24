@@ -7,3 +7,5 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.project-image img{transition:none}}@media print{.site-header,.copy-email,.copy-status{display:none}.page{padding-top:0}.publication-row,.project-card,.cv-row{break-inside:avoid}.site-footer{margin-top:20px}}
 
 .company-logo{display:block;width:min(100%,460px);height:auto;margin-top:15px}.tool-logos{display:flex;flex-wrap:wrap;gap:18px 26px;margin-bottom:24px}.tool-logo{display:inline-flex;align-items:center;gap:9px;font-size:.94rem}.tool-logo img{object-fit:contain}
+
+.method-icon{width:24px;height:24px;flex:none;color:var(--accent)}.skills-list dt{display:flex;align-items:center;gap:10px}.skills-list>div{grid-template-columns:230px minmax(0,1fr)}.research-statement{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);color:var(--muted)}.experience-project-link{margin-top:-12px;margin-bottom:12px}.experience-project-link a{text-decoration:underline;text-underline-offset:4px}@media(max-width:700px){.skills-list>div{grid-template-columns:1fr}}
